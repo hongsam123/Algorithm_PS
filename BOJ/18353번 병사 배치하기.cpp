@@ -1,3 +1,11 @@
+//1. 테이블 정의하기
+//dp[n] = 현재 병사를 배치했을때 가능한 최대 병사 수
+//2. 점화식 찾기
+//for (int j = 0; j <= i; j++)
+//	if (arr[i] > arr[j]) dp[i] = max(dp[i], dp[j] + 1)
+//
+//LIS(Longest Increasing Subsequence)
+//하나의 수열이 주어졌을 때 값들이 증가하는 형태의 가장 긴 부분 수열을 찾는 대표적인 dp
 #include<iostream>
 #include<algorithm>
 using namespace std;
