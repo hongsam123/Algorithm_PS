@@ -1,39 +1,39 @@
+//표를 생각하기
+//1. 테이블 정의
+//dp[n][m] = 첫번째 글자를 n번째, 두번째 글자를 m번째 봤을 때 최대 LCS의 길이
+//2. 점화식 찾기
+//if (a[i] == b[i]) dp[i][j] = dp[i - 1][j - 1] + 1
+//else dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
+//3. 초기값 설정
 #include<iostream>
-//#include<string>
-#include<algorithm>
 using namespace std;
-int main(void)
+
+string a;
+string b;
+int dp[1002][1002];
+
+int main()
 {
-	string tmp1,tmp2;
-	cin>>tmp1>>tmp2;
-	
-	string str1,str2;
-	str1 = '0'+tmp1;
-	str2 = '0'+tmp2;
-	
-	int len1,len2;
-	len1 = str1.size();
-	len2 = str2.size();
-	
-	int c[len1+1][len2+1]={0};
-	
-	for(int i=1;i<=len1;i++)
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> a >> b;
+
+	a = '0' + a;
+	b = '0' + b;
+
+	for (int i = 1; i < a.size(); i++)
 	{
-		for(int j=1;j<=len2;j++)
+		for (int j = 1; j < b.size(); j++)
 		{
-			if(str1[i]==str2[j])
-			{
-				c[i][j] = c[i-1][j-1]+1;
-			}
+			if (a[i] == b[j])
+				dp[i][j] = dp[i - 1][j - 1] + 1;
 			else
-			{
-				c[i][j] = max(c[i-1][j],c[i][j-1]);
-			}
+				dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
 		}
 	}
-	
-	cout<<c[len1][len2]-1;
-	
+
+	cout << dp[a.size() - 1][b.size() - 1];
+
 	return 0;
-		
 }
