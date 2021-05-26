@@ -161,32 +161,34 @@
 //boj5567 결혼식
 
 //Dijkstra
-#include<queue>
-#include<vector>
-using namespace std;
+//#include<queue>
+//#include<vector>
+//using namespace std;
+//
+//int v, e, st;	//st : 시작 정점의 번호
+//vector<pair<int, int>> adj[20005];	//cost(연결 간선의 비용), index
+//const int INF = 1e9+10;	//실제로 가능한 거리보다 큰 값
+//int d[20005];
+//void dijkstra()
+//{
+//	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;	//greater으로 힙을 min heap으로 변경
+//	d[st] = 0;
+//	pq.push({ d[st],st });	//{거리, 이웃한 정점의 번호}
+//	while (!pq.empty())	//힙에 원소가 없을 때까지 원소를 꺼내고 인접한 정점들에 대해 d값을 갱신, 힙에 넣는 작업 반복
+//	{
+//		auto cur = pq.top(); pq.pop();
+//		int dist = cur.first, idx = cur.second;
+//		if (d[idx] != dist) continue;	//해당 거리가 d테이블(최단 거리 테이블)에 저장된 거리가 맞는지 확인.
+//		for (auto nxt : adj[idx])
+//		{
+//			int cost = nxt.first, nidx = nxt.second;
+//			if (d[nidx] > dist + cost)
+//			{
+//				d[nidx] = dist + cost;
+//				pq.push({ d[nidx],nidx });
+//			}
+//		}
+//	}
+//}
 
-int v, e, st;	//st : 시작 정점의 번호
-vector<pair<int, int>> adj[20005];	//cost(연결 간선의 비용), index
-const int INF = 1e9+10;	//실제로 가능한 거리보다 큰 값
-int d[20005];
-void dijkstra()
-{
-	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;	//greater으로 힙을 min heap으로 변경
-	d[st] = 0;
-	pq.push({ d[st],st });	//{거리, 이웃한 정점의 번호}
-	while (!pq.empty())	//힙에 원소가 없을 때까지 원소를 꺼내고 인접한 정점들에 대해 d값을 갱신, 힙에 넣는 작업 반복
-	{
-		auto cur = pq.top(); pq.pop();
-		int dist = cur.first, idx = cur.second;
-		if (d[idx] != dist) continue;	//해당 거리가 d테이블(최단 거리 테이블)에 저장된 거리가 맞는지 확인.
-		for (auto nxt : adj[idx])
-		{
-			int cost = nxt.first, nidx = nxt.second;
-			if (d[nidx] > dist + cost)
-			{
-				d[nidx] = dist + cost;
-				pq.push({ d[nidx],nidx });
-			}
-		}
-	}
-}
+//boj1753 최단경로
