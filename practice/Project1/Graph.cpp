@@ -158,9 +158,7 @@
 //}
 //
 
-//boj5567 결혼식
-
-//Dijkstra
+////Dijkstra
 //#include<queue>
 //#include<vector>
 //using namespace std;
@@ -191,4 +189,13 @@
 //	}
 //}
 
+////Floyd Warshall
+//dp를 이용해서 정점 개수가 n개 일때
+//0~n개의 정점을 거쳐 갈때의 모든 경로 중 최단 거리를 구하는 방법
+//시간 복잡도는 O(V ^ 3)
+//for (int k = 0; k <= n; k++)
+//	DP[i][j] = min(DP[i][j], DP[i][k] + DP[k][j]);
+
+//boj5567 결혼식
 //boj1753 최단경로
+//boj11404 플로이드
