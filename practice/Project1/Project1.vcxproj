@@ -150,6 +150,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="greedy.cpp" />
     <ClCompile Include="linkedList.cpp" />
+    <ClCompile Include="math.cpp" />
     <ClCompile Include="queue.cpp" />
     <ClCompile Include="recursive.cpp" />
     <ClCompile Include="simulation.cpp" />
