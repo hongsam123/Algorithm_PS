@@ -61,6 +61,39 @@
 //	return st;	//st == en으로 가능한 후보가 1개로 확장될 경우 while 문 탈출
 //}
 
+//주의사항
+//st = mid / en = mid - 1 일 때는 mid = (st + en + 1) / 2
+//st = mid + 1 / en = mid 일 때는 mid = (st + en) / 2
+//으로 두어야 무한 루프를 방지한다 (st와 en이 1차이 나는 경우를 방지하기 위해)
+//
+//또는 en - st가 어느 정도 이하로 줄어들면 그 안에서는 선형 탐색을 하여 구현할 수도 있다.
+//단, 이때는 범위 내에서 제일 왼쪽(최소)를 찾아야 하는지, 오른쪽(최대)을 찾아야 하는지에 따라 st를 증가 / en을 감소하여 탐색한다
+
+////STL #include<algorithm>
+//binary_search / lower_bound / upper_bound 함수가 있다.
+//세 함수는 오름차순으로 정렬되어있는 배열 / vector에서만 정상 작동한다
+//
+// - binary_search : 주어진 범위내에 원소가 들어있는지 여부를 O(logN)에 true / false로 반환
+
+//#include<algorithm>
+//
+//int arr[5] = { 1,2,3,4,6 };
+//if (binary_search(arr, arr + 5, 5))
+//	cout << "5 in arr\n";
+//else
+//	cout << "5 not in arr\n";
+//
+//vector<int> v = { 4,5,6,10 };
+//if (binary_search(vec.begin(), vec.end(), 12))
+//	cout << "20 in v\n";
+//else
+//	cout << "20 not in v\n";
+//
+
+
+
+
+
 //p. 197 부품 찾기
 //#include<iostream>
 //#include<vector>
@@ -193,5 +226,5 @@
 //(문제의 크기가 작아서 이분 탐색을 꼭 해야할 필요는 없음)
 //이미 존재하는 휴게소 사이 일정한 거리를 두고 새로운 휴게소를 세울 때
 //세운 휴게소의 갯수가 m값과 같을때까지 한다
-//boj 1920 수 찾기
+//boj 1920 수 찾기 (+stl)
 //boj 10816 숫자 카드 2

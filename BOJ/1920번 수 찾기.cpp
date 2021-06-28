@@ -49,3 +49,42 @@ int main()
 
 	return 0;
 }
+
+//stl »ç¿ë(binary_search)
+//#include<iostream>
+//#include<algorithm>
+//using namespace std;
+//
+//int n;
+//int arr[100002];
+//
+//int main()
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	cin >> n;
+//
+//	for (int i = 0; i < n; i++)
+//	{
+//		cin >> arr[i];
+//	}
+//
+//	sort(arr, arr + n);
+//
+//	int test;
+//	cin >> test;
+//
+//	while (test--)
+//	{
+//		int x;
+//		cin >> x;
+//
+//		if (binary_search(arr, arr + n, x))
+//			cout << 1 << "\n";
+//		else
+//			cout << 0 << "\n";
+//	}
+//
+//	return 0;
+//} 
