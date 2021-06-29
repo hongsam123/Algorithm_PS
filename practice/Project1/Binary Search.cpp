@@ -74,6 +74,9 @@
 //세 함수는 오름차순으로 정렬되어있는 배열 / vector에서만 정상 작동한다
 //
 // - binary_search : 주어진 범위내에 원소가 들어있는지 여부를 O(logN)에 true / false로 반환
+// -lower_bound, upper_bound : 각각 target이 삽입되어도 오름차순 순서가 유지되는 제일 왼쪽 / 오른쪽 인덱스 반환
+//  (단 배열을 넘겨줄 경우 포인터를 반환하고 vector일 경우 iterator를 반환한다)
+// - equal_range : lower_bound, upper_bound의 결과를 pair로 반환한다
 
 //#include<algorithm>
 //
@@ -89,9 +92,6 @@
 //else
 //	cout << "20 not in v\n";
 //
-
-
-
 
 
 //p. 197 부품 찾기
@@ -227,4 +227,6 @@
 //이미 존재하는 휴게소 사이 일정한 거리를 두고 새로운 휴게소를 세울 때
 //세운 휴게소의 갯수가 m값과 같을때까지 한다
 //boj 1920 수 찾기 (+stl)
-//boj 10816 숫자 카드 2
+//boj 10816 숫자 카드 2(+stl)
+//boj 10815 숫자 카드
+//boj 1822 차집합
