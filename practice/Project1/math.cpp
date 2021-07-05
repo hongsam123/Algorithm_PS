@@ -155,6 +155,11 @@
 //성질 2. 두 수 A, B의 공배수들은 LCM(A, B)의 모든 배수들이다.
 //성질 3. A × B = GCD(A, B) × LCM(A, B)
 //성질 4. GCD(n, n + 1) = 1
+//int lcm(int a, int b)
+//{
+//	return a / gcd(a, b) * b;
+//}
+//int overflow를 막기 위해 gcd로 먼저 나눈 후 b를 곱한다
 
 ////합동식
 //A≡B(mod m)이라는 기호의 의미는 A와 B가 m으로 나눈 나머지가 같다는 의미
