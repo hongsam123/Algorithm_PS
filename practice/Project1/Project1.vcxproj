@@ -149,6 +149,7 @@
     <ClCompile Include="DP.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="greedy.cpp" />
+    <ClCompile Include="Hash,BST,Heap.cpp" />
     <ClCompile Include="linkedList.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="queue.cpp" />
