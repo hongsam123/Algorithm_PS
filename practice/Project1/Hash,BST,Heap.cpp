@@ -108,6 +108,92 @@
 //	return 0;
 //}
 
+////Heap
+//최대값 혹은 최솟값을 빠르게 찾아내기 위한 이진트리
+//최소 힙인 경우 부모가 자식보다 작고, 최대 힙인 경우 부모가 자식보다 크다.이때 루트가 최소값 혹은 최대값
+//(왼쪽 오른쪽은 상관 없음)
+//
+//최소 힙에서는 원소의 삽입, 최솟값 확인, 최솟값 삭제의 기능 제공
+//최대 힙에서는 원소의 삽입, 최대값 확인, 최대값 삭제의 기능 제공
+//(최소 혹은 최대가 아닌 값의 존재 여부 확인 또는 원소 제거 불가능)
+//
+//- 삽입 : 원소를 트리 상의 다음 공간에 추가하고, 이후 힙의 성질을 만족하게끔 서로 자리를 바꾸는 식으로 구현
+//(트리 상의 다음 공간은 높이가 작은 곳부터, 높이가 같다면 왼쪽부터 채워나가므로 균형트리가 보장된다.)
+//삽입시 아무리 비교를 많이 해도 최대 높이만큼만 올라가면 삽입이 가능하고 힙이 균형 트리이기 때문에 시간복잡도 O(lon N) 보장
+//- 최솟값 확인 : 루트에 적힌 원소
+//- 최소값 삭제 : 루트를 바로 지우면 트리 구조가 깨진다.
+//루트 값(최소값)을 트리 구조상 가장 마지막 위치의 값과 바꾸고 제거.
+//힙의 조건을 만족하도록 위치를 바꿔가며 해결(자식이 두개인 경우에는 둘 자식 중 더 작은 자식과 교환)
+//최대 높이 만큼만 내려가면 삭제가 가능, 균형트리이므로 O(logN)이 보장된다
+//
+//트리의 구현
+//트리 구조는 node를 만들어 구현하는것이 정석적이지만 균형트리가 보장될 경우에는 각 원소를 배열에 대응할 수 있다.
+//x의 왼쪽, 오른쪽 자식 인덱스 : 2x, 2x + 1
+//x의 부모 : x / 2
+//
+//boj1927 최소 힙
+//#include<iostream>
+//#include<algorithm>
+//using namespace std;
+//
+//int heap[100005];
+//int sz = 0;	//heap size
+//
+//void add(int x)
+//{
+//	sz++;
+//	heap[sz] = x;
+//	int idx = sz;
+//	while (idx != 1)
+//	{
+//		int par = idx / 2;
+//		if (heap[par] < heap[idx]) break;
+//		swap(heap[par], heap[idx]);
+//		idx = par;
+//	}
+//}
+//
+//int top()
+//{
+//	if (sz == 0) return 0;
+//	return heap[1];
+//}
+//
+//void pop()
+//{
+//	if (sz == 0) return;
+//	swap(heap[1], heap[sz]);
+//	sz--;
+//	int idx = 1;
+//	while (2 * idx <= sz)	//2*idx가 sz보다 크면 idx가 leaf노드
+//	{
+//		int min_child;
+//		if (heap[idx * 2]<heap[idx * 2 + 1] or 2 * idx + 1>sz)	//왼쪽 자식값이 더 작거나 왼쪽 자식밖에 없는 경우
+//			min_child = 2 * idx;	
+//		else
+//			min_child = 2 * idx + 1;
+//		if (heap[min_child] > heap[idx]) break;
+//		swap(heap[min_child], heap[idx]);
+//		idx = min_child;
+//	}
+//}
+//
+////힙 STL
+//==> priority_queue(기본적으로 최대힙)
+//
+//(힙에서 할 수 있는 것은 균형 이진 트리에서도 할 수 있고 시간복잡도도 O(log N)으로 동일
+//	그러나 힙이 균형 이진트리보다 수행 속도가 빠르고, 구현도 쉽고, 공간도 적게 차지하므로 최소 혹은 최대값의 확인/삭제만 필요할 때는 힙을 사용한다)
+//
+//#include<queue>
+//using namespace std;
+//
+//priority_queue<int> pq;	//최대 힙
+//priority_queue<int, vector<int>, greater<int>> PQ;	//최소 힙
+
+
+
+
 //boj7785 회사에 있는 사람
 //boj17219 비밀번호 찾기
 //boj9375 패션왕 신해빈
+//boj11286 절댓값 힙
