@@ -1,4 +1,4 @@
 ﻿  문자열 처리.cpp
-C:\Users\Eunsol\Desktop\PS\practice\Project1\문자열 처리.cpp(121,25): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Eunsol\Desktop\PS\practice\Project1\문자열 처리.cpp(153,24): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Eunsol\Desktop\PS\practice\Project1\문자열 처리.cpp(89,35): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Eunsol\Desktop\PS\practice\Project1\문자열 처리.cpp(98,23): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Project1.vcxproj -> C:\Users\Eunsol\Desktop\PS\practice\x64\Debug\Practice.exe
