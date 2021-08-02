@@ -206,6 +206,34 @@
 //다음은 1에서 t로 가는 최단 경로를 찾는다.)
 //최단 경로 테이블이 최소값으로 갱신 될때마다 경로 복원 테이블도 거쳐간 노드의 값으로 변경한다.
 
+////서로소 집합(Disjoint Set)
+//초기화 : parent 배열에 i원소에 대한 부모 노드 번호를 저장
+//		   루트 노드인 경우 자기 자신의 번호를 저장
+//void init()
+//{
+//	for (int i = 1; i <= n; i++)
+//		parent[i] = i;
+//}
+//
+//Union : 하나의 루트 노드를 다른 노드의 자식 노드로 넣어 두 트리를 합친다
+//void union(int a, int b)
+//{
+//	int aRoot = find(a);
+//	int bRoot = find(b);
+//
+//	parent[aRoot] = bRoot;
+//}
+//
+//Find : 주어진 원소의 루트 노드 번호를 반환한다
+//int find(int a)
+//{
+//	if (parent[a] == a) return a;
+//	else  return parent[a] = find(parent[a]);
+//	//else return find(parent[a]); 보다 조금더 빠르다
+//	//루트를 갱신하면서 조회 => a그룹에 포함된 모든 정점을 b와 같은 그룸으로 만들기 위해
+//}
+
+
 //boj5567 결혼식
 //boj1753 최단경로
 //boj11779 최소비용 구하기 2
@@ -214,6 +242,8 @@
 //boj11403 경로 찾기
 //boj2665 미로만들기
 //boj6118 숨바꼭질
-//boj1717 집합의 표현
+//boj1717 집합의 표현(UnionFind)
 //boj2252 줄 세우기
 //boj1043 거짓말
+//boj3830 교수님은 기다리지 않는다(UnionFind)
+//boj1976 여행 가자(UnionFind)
