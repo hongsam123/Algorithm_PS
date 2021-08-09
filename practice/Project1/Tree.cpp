@@ -235,9 +235,39 @@
 //모든 간선을 힙에 추가한다.
 //4. 최소 신장 트리에 v-1개의 간선이 추가될 때까지 2,3번 과정을 반복한다.
 //
-
+//#define ti3 tuple<int,int,int>
+//int v, e;
+//vector<pair<int, int>> adj[100005];	//<cost,idx>
+//bool check[100005];	//i번째 정점이 최소 신장 트리에 포함되었는지 여부
+//void prim() {
+//	int cnt = 0;
+//	priority_queue<ti3, vector<ti3>, greater<tie>> pq;	//min heap
+//	for (auto nxt : adj[1])
+//		pq.push(nxt.first, 1, nxt.second);
+//	check[1] = 1;	
+//
+//	while (1)
+//	{
+//		int cost, v1, v2;
+//		tie(cost, v1, v2) = pq.top(); pq.pop();
+//		if (check[v2]) continue;	//현재 보고있는 간선이 최소 신장 트리에 포함된 두 정점을 연걸한 것인지,
+//									//최소 신장 트리에 포함된 정점 u와 포함되지 않은 정점 v를 연결한 것인지를 판단
+//		
+//		cout << cost << " " << v1 << " " << v2 << "\n";
+//		check[v2] = 1;
+//		cnt++;
+//
+//		if (cnt == v - 1) break;
+//		for (auto nxt : adj[v2])
+//		{
+//			if (!check[nxt.second])
+//				pq.push(nxt.first, v2, nxt.second);
+//		}
+//	}
+//}
 
 //boj1991 트리 순회
 //boj11725 트리의 부모 찾기
-//boj1197 최소 스패닝 트리
+//boj1197 최소 스패닝 트리(크루스칼, 프림)
 //boj1922 네트워크 연결
+//boj4386 별자리 만들기(크루스칼)

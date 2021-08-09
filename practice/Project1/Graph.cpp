@@ -159,6 +159,8 @@
 //
 
 ////Dijkstra
+//음의 간선이 없어야 함
+//출발지가 고정
 //#include<queue>
 //#include<vector>
 //using namespace std;
@@ -177,6 +179,7 @@
 //		auto cur = pq.top(); pq.pop();
 //		int dist = cur.first, idx = cur.second;
 //		if (d[idx] != dist) continue;	//해당 거리가 d테이블(최단 거리 테이블)에 저장된 거리가 맞는지 확인.
+//		//if(d[edx]<dist) continue;와 동일
 //		for (auto nxt : adj[idx])
 //		{
 //			int cost = nxt.first, nidx = nxt.second;
@@ -311,3 +314,68 @@
 //boj1976 여행 가자(UnionFind)
 //boj2623 음악프로그램(topology sort)
 //boj1516 게임 개발(topology sort)
+//boj1504 특정한 최단 경로
+#include<iostream>
+#include<algorithm>
+#include<queue>
+#include<vector>
+using namespace std;
+
+int n, e;
+int v1, v2;
+int d[802];
+priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+vector<pair<int, int>> adj[802];
+const int INF = 1e9 + 10;
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n >> e;
+
+	for (int i = 0; i < n; i++)
+	{
+		int a, b, c;
+		cin >> a >> b >> c;
+		adj[a].push_back({ c,b });
+		adj[b].push_back({ c,a });
+	}
+
+	cin >> v1 >> v2;
+
+	//v1->v2 최단 거리
+	fill(d, d + 801, INF);
+	d[v1] = 0;
+	pq.push({ 0,v1 });
+
+	while (!pq.empty())
+	{
+		auto cur = pq.top(); pq.pop();
+		int dist = cur.first;
+		int idx = cur.second;
+
+		if (dist != d[idx]) continue;
+		for (auto nxt : adj[idx])
+		{
+			int cost = nxt.first;
+			int nidx = nxt.second;
+			if (d[nidx] > cost + dist)
+			{
+				d[nidx] = cost + dist;
+				pq.push({ d[nidx],nidx });
+			}
+		}
+	}
+
+	if (d[v2] == INF)
+	{
+		cout << -1;
+		return 0;
+	}
+	cout << d[v2];
+	
+
+	return 0;
+}

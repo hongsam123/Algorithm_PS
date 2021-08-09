@@ -61,3 +61,64 @@ int main()
 
 	return 0;
 }
+//prim 알고리즘 
+//#include<iostream>
+//#include<queue>
+//#include<vector>
+//#include<utility>
+//#include<tuple>
+//#define ti3 tuple<int,int,int>
+//using namespace std;
+//
+//int v, e;
+//vector<pair<int, int>> adj[100005];		//cost, idx
+//priority_queue<ti3, vector<ti3>, greater<ti3>> pq;
+//bool check[10005];
+//int cnt;
+//int ans;
+//
+//int main()
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	cin >> v >> e;
+//
+//	for (int i = 0; i < e; i++)
+//	{
+//		int a, b, c;
+//		cin >> a >> b >> c;
+//		adj[a].push_back({ c,b });
+//		adj[b].push_back({ c,a });
+//	}
+//
+//	for (auto nxt : adj[1])
+//	{
+//		pq.push({ nxt.first, 1, nxt.second });
+//	}
+//	check[1] = 1;
+//
+//	while (1)
+//	{
+//		int cost, a, b;
+//		tie(cost, a, b) = pq.top(); pq.pop();
+//		if (check[b]) continue;
+//
+//		check[b] = 1;
+//		cnt++;
+//		ans += cost;
+//
+//		if (cnt == v - 1) break;
+//
+//		for (auto nxt : adj[b])
+//		{
+//			if (!check[nxt.second])
+//				pq.push({ nxt.first,b,nxt.second });
+//		}
+//	}
+//
+//	cout << ans;
+//
+//	return 0;
+//}
+
