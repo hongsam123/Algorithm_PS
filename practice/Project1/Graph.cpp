@@ -314,5 +314,8 @@
 //boj1976 여행 가자(UnionFind)
 //boj2623 음악프로그램(topology sort)
 //boj1516 게임 개발(topology sort)
-//boj1504 특정한 최단 경로
-//boj18223 민준이와 마산 그리고 건우
+//boj1504 특정한 최단 경로(dijkstra)
+//boj18223 민준이와 마산 그리고 건우(dijkstra)
+//boj2458 키 순서(floyd warshall)
+//boj14588 Line Friends (Small) (floyd warshall)
+//boj1389 케빈 베이컨의 6단계 법칙
