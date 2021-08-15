@@ -316,3 +316,87 @@
 //boj4386 별자리 만들기(크루스칼)
 //boj11437 LCA
 //boj11438 LCA 2
+//boj3584 가장 가까운 공통 조상
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int t, n;
+int expo;
+vector<int> edge[10002];
+int depth[10002];
+int parent[20][10002];
+
+void initTree(int node, int p)
+{
+
+}
+
+int lca(int a, int b)
+{
+	if (depth[a] != depth[b])
+	{
+		if (depth[a] > depth[b]) swap(a, b);
+		for (int k = expo; k >= 0; k--)
+		{
+			if (depth[a] <= depth[parent[k][b]])
+				b = parent[k][b];
+		}
+	}
+
+	int ans = 0;
+	if (a != b)
+	{
+		for (int k = expo - 1; k >= 0; k--)
+		{
+			if (parent[k][a] != parent[k][b])
+			{
+				a = parent[k][a];
+				b = parent[k][b];
+			}
+			ans = parent[k][a];
+		}
+	}
+
+	return ans;
+}
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> t;
+
+	while (t--)
+	{
+		cin >> n;
+
+		for (int i = 1; i <= n; i++)
+			edge[i].clear();
+		fill(depth, depth + n + 1, 0);
+		for (int i = 0; i << 20; i++)
+			fill(parent[i], parent[i] + n + 1, 0);
+
+		for (int i = 1; i <= n; i *= 2)
+			expo++;
+
+		for (int i = 0; i < n-1; i++)
+		{
+			int u, v;
+			cin >> u >> v;
+			edge[u].push_back(v);
+		}
+
+		int a, b;
+		cin >> a >> b;
+
+		//트리 초기화
+		initTree();
+
+		cout << lca(a, b) << "\n";
+	}
+
+	return 0;
+}
