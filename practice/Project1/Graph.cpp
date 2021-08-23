@@ -322,3 +322,4 @@
 //boj4485 녹색 옷 입은 애가 젤다지?
 //boj1238 파티
 //boj4195 친구 네트워크(unionfind)
+//boj1005 ACM Craft(topology sort)
