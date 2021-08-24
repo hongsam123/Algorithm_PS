@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int tmp[1000001];
+int tmp[2000001];
 int arr[100001];
 
 int main(void)

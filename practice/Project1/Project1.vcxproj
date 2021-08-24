@@ -157,6 +157,7 @@
     <ClCompile Include="simulation.cpp" />
     <ClCompile Include="stack.cpp" />
     <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="two Pointer.cpp" />
     <ClCompile Include="문자열 처리.cpp" />
     <ClCompile Include="소스.cpp" />
     <ClCompile Include="sort.cpp" />
