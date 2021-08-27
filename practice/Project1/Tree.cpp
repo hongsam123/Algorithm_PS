@@ -307,7 +307,93 @@
 //			 }
 //		 parent[0][a];	//답
 
-
+////인덱스드 트리(Indexed Tree)
+//이진트리를 응용한 트리.
+// - 리프노드에는 실제 데이터가 들어있고 내부 노드에는 왼쪽 자식과 오른쪽
+//	자식의 합이 들어있다.
+// - 포화 이진 트리 형태의 자료 구조를 가진다
+//	(leaf가 모두 차 있는 구조로 데이터가 없더라도 0으로 초기화 시켜야 한다)
+// - 내부 노드의 값을 누적함(구간합) / 최대, 최소값, gcd연산 등으로 바꿔서 응용 가능
+//
+//1. init() : 인덱스트리 생성
+//n개의 데이터가 있으면 인덱스 트리의 크기는 넉넉하게 4*n 정도로 잡는다
+//트리에서 리프노드가 시작하는 인덱스를 계산하고
+//offset을 이용해 트리의 리프노드에 데이터를 넣는다
+//데이터 개수가 모자라 리프노드를 다 채우지 못하면 나머지 부분은 0으로 채운다(포화 이진트리로 만든다)
+//리프노드를 채운 후 부모노드를 채운다(초기화)
+//일반적으로 자식의 합이 부모가 되지만 부모노드를 채우는 함수는 문제에 따라 다르게 설정 가능하다
+//
+//void init(lld n) {
+//	// OFFSET<n: 데이터 1부터 시작해서 
+//	for (OFFSET = 1; OFFSET < n; OFFSET *= 2);
+//
+//	// leaf 채우기
+//	for (lld i = 0; i < n; i++) tree[i + OFFSET] = datas[i];
+//
+//	// 포화이진트리, leaf 나머지 채움
+//	for (lld i = n; i < OFFSET; i++) tree[i + OFFSET] = 0;
+//
+//	// parent 채우기, 구간합
+//	for (lld i = OFFSET - 1; i > 0; i--) tree[i] = tree[i * 2] + tree[i * 2 + 1];
+//}
+//
+//ll init(int left, int right, int node)
+//{
+//	//내부 노드일 경우
+//	if (left != right)
+//	{
+//		int mid = (left + right) / 2;
+//		init(left, mid, node * 2);
+//		init(mid + 1, right, node * 2 + 1);
+//		tree[node] = tree[node * 2] + tree[node * 2 + 1];
+//		return tree[node];
+//	}
+//	else //리프노드일 경우
+//	{
+//		tree[node] = num[left];
+//		return tree[node];
+//	}
+//}
+//
+//호출 : init(1, n, 1);
+//
+//2. query() : 구간합(쿼리)을 찾는 함수
+//a~b 까지의 합을 구하고 싶을 때 내부 노드에  a~b 사이의 구간합을 계산한 것이 있다면 그것을 사용한다
+//
+//ll query(int left, int right, int node, int queryLeft, int queryRight)
+//{
+//	//노드가 쿼리 범위 밖
+//	if (queryRight<left || queryLeft>right)
+//		return 0;
+//	else if (queryLeft <= left && right <= queryRight)	//노드가 쿼리 범위 안에 들어옴(판단 가능)
+//		return tree[node];
+//	else //노드가 쿼리 범위에 걸쳐있음(판단 불가)
+//	{
+//		int mid = (left + right) / 2;
+//		return query(left, mid, node * 2, queryLeft, queryRight) + query(mid + 1, right, node * 2 + 1, queryLeft, queryRight);
+//	}
+//}
+//
+//3. update() : 특정 값을 업데이트하는 함수(update)
+//a인덱스의 값을 업데이트 하고 싶을 때 해당 인덱스를 포함한 내부 노드 값도 업데이트 해야한다
+//데이터 업데이트 후 내부 노드 값은 업데이트 된 왼쪽자식 + 오른쪽 자식을 수행하여 구한다
+//
+//void update(int left, int right, int node, int target, ll diff)
+//{
+//	//루트부터 시작 update
+//	if (target<left || target>right) return;
+//
+//	tree[node] += diff;
+//
+//	if (left != right)
+//	{
+//		int mid = (left + right) / 2;
+//		update(left, mid, node * 2, target, diff);
+//		update(mid + 1, right, node * 2 + 1, target, diff);
+//	}
+//}
+//
+//참고 : boj2042 구간 합 구하기
 
 //boj1991 트리 순회
 //boj11725 트리의 부모 찾기
@@ -317,3 +403,81 @@
 //boj11437 LCA
 //boj11438 LCA 2
 //boj1647 도시 분할 계획(MST)
+//boj11505 구간 곱 구하기
+#include<iostream>
+#define ll long long
+using namespace std;
+
+int n, m, k;
+ll num[1000002];
+ll tree[4000008];
+
+ll init(int left, int right, int node) {
+	if (left != right) {
+		int mid = (left + right) / 2;
+		init(left, mid, node * 2);
+		init(mid + 1, right, node * 2 + 1);
+		tree[node] = (tree[node * 2] * tree[node * 2 + 1]) % 1000000007;
+		return tree[node];
+	}
+	else //리프노드일 경우
+	{
+		tree[node] = num[left];
+		return tree[node];
+}
+
+ll query(int left, int right, int node, int queryLeft, int queryRight)
+{
+	//노드가 쿼리 범위 밖
+	if (queryRight<left || queryLeft>right)
+		return 0;
+	else if (queryLeft <= left && right <= queryRight)	//노드가 쿼리 범위 안에 들어옴(판단 가능)
+		return tree[node];
+	else //노드가 쿼리 범위에 걸쳐있음(판단 불가)
+	{
+		int mid = (left + right) / 2;
+		return (query(left, mid, node * 2, queryLeft, queryRight) * query(mid + 1, right, node * 2 + 1, queryLeft, queryRight))% 1000000007;
+	}
+}
+
+ll update(int left, int right, int node, int target, ll diff)
+{
+	//루트부터 시작 update
+	if (target<left || target>right) return;
+
+	tree[node] += diff;
+
+	if (left != right)
+	{
+		int mid = (left + right) / 2;
+		ll leftResult = update(left, mid, node * 2, target, diff);
+		update(mid + 1, right, node * 2 + 1, target, diff);
+	}
+}
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n >> m >> k;
+	for (int i = 1; i <= n; i++) {
+		cin >> num[i];
+	}
+
+	init(1, n, 1);
+
+	for(int i=0;i<m+k;i++) {
+		int a, b;
+		ll c;
+		cin >> a >> b >> c;
+		if (a == 1) {
+			ll diff = c - num[b];
+			num[b] = c;
+			update(1, n, 1, b, diff);
+		}
+		else
+			cout << query(1, n, 1, b, c) << "\n";
+
+	return 0;
+}
