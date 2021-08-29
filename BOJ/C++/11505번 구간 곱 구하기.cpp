@@ -69,7 +69,6 @@ int main()
 		ll c;
 		cin >> a >> b >> c;
 		if (a == 1) {
-			//ll diff = c / num[b];
 			num[b] = c;
 			update(1, n, 1, b, c);
 		}
@@ -80,4 +79,3 @@ int main()
 	return 0;
 
 }
-
