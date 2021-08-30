@@ -14,33 +14,3 @@
 //boj1806 부분합
 //boj1644 소수의 연속합
 //boj22862 가장 긴 짝수 연속한 부분 수열(large)
-#include<iostream>
-#include<algorithm>
-using namespace std;
-
-int n, k;
-int arr[1000002];
-int ans;
-
-int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-
-	cin >> n >> k;
-
-	for (int i = 1; i <= n; i++) {
-		cin >> arr[i];
-	}
-	
-	int st = 0;
-	int en = 0;
-	int sum = 0;
-
-	while (1) {
-		while()
-	}
-
-	cout << ans;
-
-	return 0;
-}
