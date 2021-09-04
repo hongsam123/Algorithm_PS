@@ -1,4 +1,2 @@
-﻿  BFS.cpp
-C:\Users\Eunsol\Desktop\PS\practice\Project1\BFS.cpp(130,21): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Eunsol\Desktop\PS\practice\Project1\BFS.cpp(134,21): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Eunsol\Desktop\PS\practice\Project1\BFS.cpp : fatal error C1090: PDB API를 호출하지 못했습니다. 오류 코드 '3': C:\Users\Eunsol\Desktop\PS\practice\Project1\x64\Debug\vc142.pdb
+﻿  two Pointer.cpp
+  Project1.vcxproj -> C:\Users\Eunsol\Desktop\PS\practice\x64\Debug\Practice.exe
