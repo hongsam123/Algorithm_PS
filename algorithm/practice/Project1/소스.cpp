@@ -405,3 +405,208 @@
 //
 //	return answer;
 //}
+
+//#include<iostream>
+//#include<sstream>
+//#include<vector>
+//#include<map>
+//#include<set>
+//using namespace std;
+//
+//map<string, int> ans;	//<id_list, 받을 메일 수>
+//map<string, set<string>> report_list;	
+//
+//vector<int> solution(vector<string> id_list, vector<string> report, int k) {
+//    vector<int> answer;
+//
+//	//stringstream ss;
+//	cout << report.size();
+//
+//	for (int i = 0; i < report.size(); i++) {
+//		stringstream ss;
+//		ss.str(report[i]);
+//		string a, b;	//신고한 사람, 당한 사람
+//		ss >> a >> b;
+//		report_list[b].insert(a);
+//	}
+//
+//	for (auto e : report_list) {
+//		if (e.second.size() >= k) {
+//			for (auto x : e.second) {
+//				ans[x]++;
+//			}
+//		}
+//	}
+//
+//	for (int i = 0; i < id_list.size(); i++) {
+//		answer.push_back(ans[id_list[i]]);
+//	}
+//
+//    return answer;
+//}
+//
+//int main() {
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	vector<int> v = solution({ "muzi", "frodo", "apeach", "neo" }, { "muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi" }, 2);
+//	for (int e : v) {
+//		cout << e << " ";
+//	}
+//	
+//
+//	return 0;
+//}
+//
+//#include <string>
+//#include<vector>
+//#include<algorithm>
+//#include<iostream>
+//using namespace std;
+//
+//int N;
+//int max_diff;	//최대 점수 차
+//vector<int> apeach;
+//int arr[11];
+//vector<int> ans;
+//
+//void getScore() {
+//	int apeach_score = 0;
+//	int ryan_score = 0;
+//	for (int i = 0; i <= 10; i++) {
+//		if (arr[i] == 0 && apeach[i] == 0) continue;
+//		if (arr[i] > apeach[i]) ryan_score += 10 - i;
+//		else apeach_score += 10 - i;
+//	}
+//	if (apeach_score >= ryan_score) return;
+//	cout << apeach_score << " " << ryan_score << "\n";
+//	int diff = abs(apeach_score - ryan_score);
+//
+//	if (max_diff < diff) {
+//		max_diff = diff;
+//		ans.clear();
+//		for (int i = 0; i <= 10; i++) ans.push_back(arr[i]);
+//		return;
+//	}
+//	if (max_diff == diff) {
+//		//낮은 점수를 더 많이 맞힌 경우
+//		for (int i = 10; i >= 0; i--) {
+//			if (ans[i] == arr[i]) continue;
+//			if (ans[i] > arr[i]) return;
+//			else break;
+//		}
+//		ans.clear();
+//		for (int i = 0; i <= 10; i++) ans.push_back(arr[i]);
+//		return;
+//	}
+//}
+//
+//void func(int x, int k) {
+//	if (k == N) {
+//		for (int i = 0; i < 11; i++) {
+//			cout << arr[i] << " ";
+//		}
+//		cout << "\n";
+//		getScore();
+//		return;
+//	}
+//
+//	for (int i = x; i <= 10; i++) {
+//		if (arr[i] > apeach[i]) continue;
+//		arr[i]++;
+//		func(i, k + 1);
+//		arr[i]--;
+//	}
+//}
+//
+//vector<int> solution(int n, vector<int> info) {
+//	vector<int> answer;
+//
+//	N = n;
+//	apeach = info;
+//	func(0, 0);
+//
+//	if (ans.empty()) answer.push_back(-1);
+//	else answer = ans;
+//
+//	return answer;
+//}
+//
+//int main() {
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	vector<int> v = solution(5, { 2,1,1,1,0,0,0,0,0,0,0 });
+//	for (int e : v) {
+//		cout << e << " ";
+//	}
+//
+//
+//	return 0;
+//}
+
+#include <string>
+#include <vector>
+#include <iostream>
+#define ll long long
+using namespace std;
+
+struct COMMAND
+{
+	int x;
+	int y;
+	int xx;
+	int yy;
+	int Value;
+};
+
+int n;
+vector<vector<int>> map;
+ll fenwickTree[1002][1002];
+vector<COMMAND> cmd;
+
+void update(int x, int y, ll val) {
+	while()
+}
+
+void make_fenwickTree() {
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j < n; j++) {
+			update(i, j, map[i][j]);
+		}
+	}
+}
+
+int solution(vector<vector<int>> board, vector<vector<int>> skill) {
+    int answer = 0;
+
+	map = board;
+	n = board.size();
+	make_fenwickTree();
+
+	for (int i = 0; i < skill.size(); i++) {
+		int type = skill[i][0];
+		int r1 = skill[i][1];
+		int c1 = skill[i][2];
+		int r2 = skill[i][3];
+		int c2 = skill[i][4];
+		int diff = skill[i][5];
+
+
+
+		
+	}
+
+    return answer;
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int x = solution({ {5, 5, 5, 5, 5},{5, 5, 5, 5, 5},{5, 5, 5, 5, 5},{5, 5, 5, 5, 5} });
+	cout << x;
+
+
+	return 0;
+}
