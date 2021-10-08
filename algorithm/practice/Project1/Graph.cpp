@@ -336,3 +336,39 @@
 //boj1939 중량제한(union find)
 //boj1916 최소비용 구하기
 //boj1261 알고스팟
+//boj17471 게리맨더링
+////boj1167 트리의 지름 
+//#include<iostream>
+//#include<vector>
+//#define pii pair<int,int>
+//using namespace std;
+//
+//int v;
+//vector<pii> adj[100002];	//<v,cost>
+//bool visited[100002][100002];
+//int ans;
+//
+//viik
+//
+//int main() {
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	cin >> v;
+//	for (int i = 1; i <= v; i++) {
+//		int u;
+//		cin >> u;
+//		int v, cost;
+//		while (1) {
+//			cin >> v;
+//			if (v == -1) break;
+//			cin >> cost;
+//			adj[u].push_back({ v,cost });
+//		}
+//	}
+//
+//	int x = dfs(1);
+//
+//
+//	return 0;
+//}
