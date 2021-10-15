@@ -18,6 +18,7 @@
 //boj16987 계란으로 계란치기
 //boj2580 스도쿠
 //boj2023 신기한 소수
+//boj7490 0 만들기
 //boj1941 소문난 칠공주
 //#include<iostream>
 //#include<vector>

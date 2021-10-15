@@ -23,6 +23,7 @@
 //boj17140 이차원 배열과 연산
 //boj16235 나무 재테크
 //boj20057 마법사 상어와 토네이도
+//boj20055 컨베이어 벨트 위의 로봇
 
 //구현
 //boj3085 사탕게임
@@ -33,63 +34,3 @@
 //프로그래머스 2020 카카오 인턴십 수식 최대화
 //boj21608 상어 초등학교
 //1107 리모컨
-
-#include<iostream>
-using namespace std;
-
-int n;
-int ans;
-int board[501][501];
-int percentage[5][5] = {
-	{0,0,0.02,0,0},
-	{0,0.1,0.07,0.01,0},
-	{0.05,0.45,0,0,0},
-	{0,0.1,0.07,0.01,0},
-	{0,0,0.02,0,0}
-};
-int dx[4] = { 0,1,0,-1 };
-int dy[4] = { -1,0,1,0 };
-
-void rotatePercentage() {
-
-}
-
-void moveSand() {
-
-}
-
-int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-
-	cin >> n;
-
-	for (int i = 1; i <= n; i++) {
-		for (int j = 0; j < n; j++) {
-			cin >> board[i][j];
-		}
-	}
-
-	int x = n / 2;
-	int y = n / 2;
-	int cnt = 1;
-	int dir = 0;
-
-	while (1) {
-		for (int i = 0; i < 2; i++) {
-			//두번씩 정해진 수만큼 직진
-			for (int j = 0; j < cnt; j++) {
-				moveSand();
-
-				if (x == 0 && y == 0) {
-					cout << ans;
-					return 0;
-				}
-			}
-			dir++;
-			if (dir > 3) dir = 0;
-			rotatePercentage();
-		}
-		cnt++;
-	}
-}
