@@ -19,6 +19,7 @@
 //boj2580 스도쿠
 //boj2023 신기한 소수
 //boj7490 0 만들기
+//boj15684 사다리 조작
 //boj1941 소문난 칠공주
 //#include<iostream>
 //#include<vector>
