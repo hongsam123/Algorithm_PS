@@ -17,8 +17,54 @@
 //	Linked List에 새로운 원소를 집어넣을 때 맨 뒤에 넣으면 이미 존재하는 노드의 갯수만큼 이동한 후 새로운 노드를 붙어야 하므로 맨 앞에 두면 O(1)에 삽입 가능
 //
 //해쉬에서 삽입, 삭제, 검색은 모두 O(1)이지만 충돌이 빈번히 발생할수록 실제 시간 복잡도는 나빠진다.
-//데이터의 성격에 따라 테이블의 크기를 크게 한다거나 적절한 해시함수를 사용하여 충돌이 최대한 발생하지 않도록 한다
+//데이터의 성격에 따라 테이블  의 크기를 크게 한다거나 적절한 해시함수를 사용하여 충돌이 최대한 발생하지 않도록 한다
 //해시테이블을 직접 구현할 일은 별로 없고 stl에 이미 구현되어있는 이진 검색 테이블, unordered_set, unordered_map이 존재(but map, set이 낫다)
+//
+//#include<unordered_set>
+//#include<unordered_map>
+//#include<iostream>
+//using namespace std;
+//
+//void hash_example() {
+//	//unordered_set(해시)
+//	unordered_set<int> s;
+//	s.insert(-10); s.insert(5); s.insert(10);
+//	s.insert(-10);
+//	cout << s.erase(100) << "\n";
+//	cout << s.erase(5) << "\n";
+//	if (s.find(10) != s.end()) cout << "10 is in s\n";
+//	else cout << "10 is not in s\n";
+//	cout << s.size() << "\n";
+//	cout << s.count(-10) << "\n";
+//	for (auto e : s)cout << e << "\n";
+//
+//
+//	//unordered_multiset(원소의 중복이 허용되는 해시)
+//	unordered_multiset<int> ms;
+//	ms.insert(-10); ms.insert(100); ms.insert(15);
+//	ms.insert(-10); ms.insert(15);
+//
+//	cout << ms.size() << "\n";
+//	for (auto e : ms) cout << e << "\n";
+//	cout << ms.erase(15) << "\n";		//모든 15가 지워진다
+//	cout << ms.erase(ms.find(15)) << "\n";	//하나만 지울수 있다
+//	ms.insert(100);
+//	cout << ms.count(100) << "\n";	//2
+//
+//	//unordered_map
+//	unordered_map<string, int> m;
+//	m["hi"] = 123;
+//	m["bfd"] = 1000;
+//	m["gogo"] = 165;
+//	cout << m.size() << "\n";	//3
+//	m["hi"] = -3;
+//	if (m.find("hi") != m.end()) cout << "hi is in m\n";
+//	else cout << "hi is not in m\n";
+//	m.erase("gogo");
+//	for (auto e : m)
+//		cout << e.first << " " << e.second << "\n";
+//}
+
 
 
 ////Binary Search Tree
@@ -198,3 +244,4 @@
 //boj9375 패션왕 신해빈
 //boj11286 절댓값 힙
 //프로그래머스 카카오 2021채용연계형 인턴십 표 편집
+//boj13414 수강신청

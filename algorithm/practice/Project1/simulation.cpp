@@ -27,6 +27,7 @@
 //boj20058 마법사 상어와 파이어스톰
 //boj21611 마법사 상어와 블리자드
 //boj19238 스타트 택시
+//boj15685 드래곤 커브
 
 //구현&brute force
 //boj3085 사탕게임
@@ -37,4 +38,41 @@
 //프로그래머스 2020 카카오 인턴십 수식 최대화
 //boj21608 상어 초등학교
 //boj1107 리모컨
-//boj17281 야구
+////boj17281 야구
+//
+//#include<iostream>
+//using namespace std;
+//
+//int n;
+//int dx[4] = { 0,-1,0,1 };
+//int dy[4] = { 1,0,-1,0 };	//우,상, 좌 하
+//int board[22][22];	//값이 1이면 
+//int ans;
+//
+//void getAns() {
+//
+//}
+//
+//void dragonCurve(int x, int y,int d,int g) {
+//
+//}
+//
+//int main() {
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	cin >> n;
+//
+//	for (int i = 0; i < n; i++) {
+//		int x, y, d, g;
+//		cin >> x >> y >> d >> g;
+//
+//		dragonCurve(y, x, d, g);
+//	}
+//
+//	getAns();
+//
+//	cout << ans;
+//
+//	return 0;
+//}
