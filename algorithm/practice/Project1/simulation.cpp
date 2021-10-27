@@ -39,40 +39,50 @@
 //boj21608 상어 초등학교
 //boj1107 리모컨
 ////boj17281 야구
-//
-//#include<iostream>
-//using namespace std;
-//
-//int n;
-//int dx[4] = { 0,-1,0,1 };
-//int dy[4] = { 1,0,-1,0 };	//우,상, 좌 하
-//int board[22][22];	//값이 1이면 
-//int ans;
-//
-//void getAns() {
-//
-//}
-//
-//void dragonCurve(int x, int y,int d,int g) {
-//
-//}
-//
-//int main() {
-//	ios::sync_with_stdio(0);
-//	cin.tie(0);
-//
-//	cin >> n;
-//
-//	for (int i = 0; i < n; i++) {
-//		int x, y, d, g;
-//		cin >> x >> y >> d >> g;
-//
-//		dragonCurve(y, x, d, g);
-//	}
-//
-//	getAns();
-//
-//	cout << ans;
-//
-//	return 0;
-//}
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int n;
+int x, y, d, g;
+int dx[4] = { 0, -1, 0, 1 };
+int dy[4] = { 1, 0, -1, 0 };	//우,상, 좌 하
+int board[22][22];	//값이 1이면 
+int ans;
+vector<int> dir_info;
+
+void getAns() {
+
+}
+
+void dragonCurve() {
+
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n;
+
+	for (int i = 0; i < n; i++) {
+		cin >> y >> x >> d >> g;
+
+		dir_info.clear();
+
+		//0세대 진행
+		board[x][y] = 1;
+		x = x + dx[d];
+		y = y + dy[d];
+		board[x][y] = 1;
+		for (int j = 0; j < g; j++) {
+			dragonCurve();
+		}
+	}
+	getAns();
+
+	cout << ans;
+
+	return 0;
+}
