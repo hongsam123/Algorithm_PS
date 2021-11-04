@@ -28,7 +28,6 @@
 //boj21611 마법사 상어와 블리자드
 //boj19238 스타트 택시
 //boj15685 드래곤 커브
-//boj19237 어른 상어
 
 //구현&brute force
 //boj3085 사탕게임
@@ -40,35 +39,3 @@
 //boj21608 상어 초등학교
 //boj1107 리모컨
 ////boj17281 야구
-
-#include<iostream>
-#include<vector>
-using namespace std;
-
-int n, m, k;
-int board[22][22];
-struct Shark {
-	int x, y;
-	vector<vector<int>> direction;
-};
-Shark sharks[402];
-
-int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-
-	cin >> n >> m >> k;
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			cin >> board[i][j];
-		}
-	}
-
-	for (int i = 1; i <= m; i++) {
-
-	}
-
-
-	return 0;
-}

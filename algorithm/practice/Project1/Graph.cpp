@@ -338,6 +338,7 @@
 //boj1261 알고스팟
 //boj17471 게리맨더링
 //boj1987 알파벳
+//boj10282 해킹
 ////boj1167 트리의 지름 
 //#include<iostream>
 //#include<vector>
