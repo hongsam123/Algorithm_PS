@@ -107,3 +107,44 @@ where NAME is not null;
 select ANIMAL_TYPE, NVL(NAME,'No name') as NAME, SEX_UPON_INTAKE
 from ANIMAL_INS
 order by ANIMAL_ID;
+
+-------------------JOIN-------------------
+
+--1. 없어진 기록 찾기
+--OUTER JOIN => 데이터가 없을 수도 있는 쪽 JOIN컬럼에 (+)를 추가한다
+--              데이터가 없더라도 나머지 조인에 의한 결과행은 보여지도록 한다
+select ANIMAL_ID, NAME
+from (
+    select O.ANIMAL_ID,O.NAME,I.INTAKE_CONDITION
+    from ANIMAL_INS I,
+         ANIMAL_OUTS O
+    where I.ANIMAL_ID(+) = O.ANIMAL_ID
+)
+where INTAKE_CONDITION is null
+order by ANIMAL_ID;
+
+--2. 있었는데요 없었습니다
+select ANIMAL_ID,NAME
+from(
+    select I.ANIMAL_ID, I.NAME, I.DATETIME AS I_DATETIME, O.DATETIME AS O_DATETIME
+    from ANIMAL_INS I,
+         ANIMAL_OUTS O
+    where I.ANIMAL_ID = O.ANIMAL_ID
+)
+where O_DATETIME<I_DATETIME
+order by I_DATETIME;
+
+
+--3. 오랜 기간 보호한 동물(1)
+--ROWNUM : select 로 조회된 결과에 순서대로 순번을 매긴다
+--         order by를 사용하면 순번이 뒤섞이므로 정렬된 서브 쿼리 결과에 rownum을 매겨야 함
+select NAME, DATETIME
+from (
+    select I.NAME, I.DATETIME
+    from ANIMAL_INS I,
+         ANIMAL_OUTS O
+    where I.ANIMAL_ID = O.ANIMAL_ID(+)
+          and O.ANIMAL_ID is null
+    order by DATETIME
+)
+where rownum<=3;
