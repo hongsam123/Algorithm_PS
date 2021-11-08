@@ -91,6 +91,7 @@
 //
 //int main()
 //{
+//	//set
 //	set<int> s;
 //	s.insert(3);	// s = {3}
 //	s.insert({ 1,5,7 });	// s = {1,3,5,7}
@@ -105,18 +106,53 @@
 //	for (auto e : s)
 //		cout << e << " ";
 //	cout << "\n";
-//	s.clear();
+//	//s.clear();
 //	cout << s.size() << "\n";
 //
+//	set<int>::iterator it1 = s.begin();
+//	it1++;
+//	cout << *it1 << "\n";
+//	auto it2 = prev(it1);
+//	cout << *it2 << "\n";
+//	it2 = next(it1);
+//	cout << *it2 << "\n";
+//	advance(it2, -2);
+//	cout << *it2 << "\n";
+//
+//	auto it3 = s.lower_bound(2);
+//	auto it4 = s.find(5);
+//	cout << *it3 << "\n";
+//	cout << *it4 << "\n";
+//
+//	cout << "\n";
+//
+//	//multiset
 //	multiset<int> ms;
 //	ms.insert(1);
 //	ms.insert(2);
+//	ms.insert(3);
 //	ms.insert(1);
 //	for (auto e : ms)
 //		cout << e << " ";
 //	cout << "\n";
-//	cout << ms.count(1);
+//	cout << ms.count(1) << "\n";
+//	cout << ms.erase(1) << "\n";
+//	ms.erase(ms.find(2));
+//	ms.insert(3);
+//	for (auto e : ms)
+//		cout << e << " ";
+//	cout << "\n\n";
 //
+//	auto iter1 = ms.begin();
+//	auto iter2 = ms.upper_bound(3);
+//	auto iter3 = ms.lower_bound(3);
+//	auto iter4 = ms.find(3);
+//	cout << *iter1 << "\n";
+//	cout << (iter2==ms.end()) << "\n";
+//	//cout << *iter2 << "\n";	//end()를 가리키므로 출력x
+//	cout << *iter3 << "\n";
+//	cout << *iter4 << "\n";
+//	
 //	return 0;
 //}
 
@@ -141,7 +177,10 @@
 //	m["apple"] = 1111;
 //	cout << m.size() << " " << m["apple"] << "\n";
 //	m.erase("kim");
-//	m.clear();
+//	//m.clear();
+//
+//	auto it = m.find("apple");
+//	cout << it->first << " " << it->second << "\n\n";
 //	
 //	multimap<int, string> mm;
 //	//multimap은 동일한 key가 여러 개일 수 있으니 []연산자로 원소에 접근할 수 없다.
@@ -229,7 +268,7 @@
 //
 //(힙에서 할 수 있는 것은 균형 이진 트리에서도 할 수 있고 시간복잡도도 O(log N)으로 동일
 //	그러나 힙이 균형 이진트리보다 수행 속도가 빠르고, 구현도 쉽고, 공간도 적게 차지하므로 최소 혹은 최대값의 확인/삭제만 필요할 때는 힙을 사용한다)
-//
+// 
 //#include<queue>
 //using namespace std;
 //
@@ -245,3 +284,20 @@
 //boj11286 절댓값 힙
 //프로그래머스 카카오 2021채용연계형 인턴십 표 편집
 //boj13414 수강신청
+//boj1202 보석 도둑
+//가장 가격이 높은 보석 부터 확인하며 해당 보석을 담을 수 있는 
+//가방 중 최대 무게가 가장 작은 가방을 이용해 보석을 담는 것이 이득
+#include<iostream>
+using namespace std;
+
+int n, k;
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n >> k;
+
+
+	return 0;
+}
