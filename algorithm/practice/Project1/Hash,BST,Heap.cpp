@@ -285,19 +285,3 @@
 //프로그래머스 카카오 2021채용연계형 인턴십 표 편집
 //boj13414 수강신청
 //boj1202 보석 도둑
-//가장 가격이 높은 보석 부터 확인하며 해당 보석을 담을 수 있는 
-//가방 중 최대 무게가 가장 작은 가방을 이용해 보석을 담는 것이 이득
-#include<iostream>
-using namespace std;
-
-int n, k;
-
-int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-
-	cin >> n >> k;
-
-
-	return 0;
-}

@@ -148,3 +148,40 @@ from (
     order by DATETIME
 )
 where rownum<=3;
+
+
+-------------------String, Date-------------------
+
+--1. 루시와 엘라 찾기
+select ANIMAL_ID, NAME, SEX_UPON_INTAKE
+from ANIMAL_INS
+where NAME in ('Lucy','Ella','Pickle','Rogan','Sabrina','Mitty')
+order by ANIMAL_ID;
+
+--2. 이름에 el이 들어가는 동물 찾기
+select ANIMAL_ID, NAME
+from ANIMAL_INS
+where ( NAME like '%el%' or
+      NAME like '%eL%' or
+      NAME like '%EL%' or
+      NAME like '%El%' )
+      and ANIMAL_TYPE = 'Dog'
+order by NAME;
+
+--NAME을 전부 대문자로 바꾸고 EL이 들어있는지 확인
+select ANIMAL_ID, NAME
+from ANIMAL_INS
+where upper(NAME) like '%EL%'
+      and ANIMAL_TYPE = 'Dog'
+order by NAME;
+
+--3. 중성화 여부 파악하기
+--case when .. then : 가져온 값에 어떤 조건을 걸어 보여주거나 또는 값을 변환할 필요가 있을 경우
+select ANIMAL_ID, NAME, 
+    case when SEX_UPON_INTAKE like '%Neutered%' then 'O'
+         when SEX_UPON_INTAKE like '%Spayed%' then 'O'
+    else 'X'
+    end
+    as 중성화
+from ANIMAL_INS
+order by ANIMAL_ID;
