@@ -185,3 +185,4 @@ select ANIMAL_ID, NAME,
     as 중성화
 from ANIMAL_INS
 order by ANIMAL_ID;
+
