@@ -150,6 +150,16 @@ from (
 where rownum<=3;
 
 
+--4. 보호소에서 중성화한 동물
+select ANIMAL_ID, ANIMAL_TYPE, NAME
+from (select ins.ANIMAL_ID, ins.ANIMAL_TYPE, ins.NAME
+      from ANIMAL_INS ins,
+           ANIMAL_OUTS outs
+      where ins.ANIMAL_ID = outs.ANIMAL_ID and
+            ins.SEX_UPON_INTAKE <> outs.SEX_UPON_OUTCOME )
+order by ANIMAL_ID;
+
+
 -------------------String, Date-------------------
 
 --1. 루시와 엘라 찾기
@@ -186,3 +196,18 @@ select ANIMAL_ID, NAME,
 from ANIMAL_INS
 order by ANIMAL_ID;
 
+
+--4. 오랜 기간 보호한 동물(2)
+select ANIMAL_ID, NAME
+from (select ins.ANIMAL_ID, ins.NAME, (outs.DATETIME-ins.DATETIME) TIME
+      from ANIMAL_INS ins,
+           ANIMAL_OUTS outs
+      where ins.ANIMAL_ID = outs.ANIMAL_ID
+      order by TIME DESC)
+where rownum<=2;
+
+
+--5. DATETIME에서 DATE로 형 변환
+select ANIMAL_ID, NAME, to_char(DATETIME,'YYYY-MM-DD') 날짜
+from ANIMAL_INS
+order by ANIMAL_ID;
