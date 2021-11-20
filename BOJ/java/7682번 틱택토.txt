@@ -1,0 +1,85 @@
+package algorithm.boj.stage14.backtracking;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class boj7682 {
+    static char[][] board = new char[4][4];
+    static HashSet<String> hs = new HashSet<>();
+    static boolean check() {
+        boolean ans = false;
+        //가로 한줄
+        for(int i=0;i<3;i++) {
+            if(board[i][0]=='X'&& board[i][1]=='X' && board[i][2]=='X') ans = true;
+            if(board[i][0]=='O'&& board[i][1]=='O' && board[i][2]=='O') ans = true;
+        }
+        //세로 한줄
+        for(int i=0;i<3;i++) {
+            if(board[0][i]=='X'&& board[1][i]=='X' && board[2][i]=='X') ans = true;
+            if(board[0][i]=='O'&& board[1][i]=='O' && board[2][i]=='O') ans = true;
+        }
+        //대각선1
+        if(board[0][0]=='X'&& board[1][1]=='X' && board[2][2]=='X') ans = true;
+        if(board[0][0]=='O'&& board[1][1]=='O' && board[2][2]=='O') ans = true;
+        //대각선2
+        if(board[0][2]=='X'&& board[1][1]=='X' && board[2][0]=='X') ans = true;
+        if(board[0][2]=='O'&& board[1][1]=='O' && board[2][0]=='O') ans = true;
+
+        return ans;
+    }
+
+    static void func(int num,char turn) {
+        if(check() || num==9) {
+            String str = "";
+            for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++) {
+                    str+= board[i][j];
+                }
+            }
+            //System.out.println(str);
+            if(!hs.contains(str)) hs.add(str);
+            return;
+        }
+        for(int i=0;i<3;i++) {
+            for(int j=0;j<3;j++) {
+                if(board[i][j]=='.') {
+                    if(turn=='X') {
+                        board[i][j] = 'X';
+                        func(num+1,'O');
+                        board[i][j] = '.';
+                    }else {
+                        board[i][j] = 'O';
+                        func(num+1,'X');
+                        board[i][j] = '.';
+                    }
+                }
+            }
+        }
+    }
+    public static void main(String[] args) throws IOException {
+        for(int i=0;i<3;i++) {
+            for(int j=0;j<3;j++) {
+                board[i][j] = '.';
+            }
+        }
+        func(0,'X');
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        while(true) {
+            String line = br.readLine();
+            if(line.equals("end")) break;
+            //System.out.println(line);
+            if(hs.contains(line)) {
+                System.out.println("valid");
+            }else {
+                System.out.println("invalid");
+            }
+        }
+    }
+}

@@ -14,7 +14,7 @@ where INTAKE_CONDITION = "Sick";
 
 --4. 어린 동물 찾기
 select ANIMAL_ID, NAME from ANIMAL_INS
-where INTAKE_CONDITION <> 'Aged'
+where INTAKE_CONDITION != 'Aged'
 order by ANIMAL_ID;
 
 --5. 동물의 아이디와 이름
@@ -74,6 +74,13 @@ group by HOUR(DATETIME)
 having HOUR>=9 and HOUR<=19
 order by HOUR(DATETIME);
 
+SELECT TO_CHAR(DATETIME,'HH24') AS HOUR, COUNT(*) AS COUNT
+FROM ANIMAL_OUTS
+GROUP BY TO_CHAR(DATETIME,'HH24')
+HAVING TO_CHAR(DATETIME,'HH24')>=9 AND TO_CHAR(DATETIME,'HH24')<=19
+ORDER BY TO_CHAR(DATETIME,'HH24');
+
+
 --4. 입양 시각 구하기(2)
 --(4-1) set변수 사용
 set @hour = -1;
@@ -123,6 +130,16 @@ from (
 where INTAKE_CONDITION is null
 order by ANIMAL_ID;
 
+
+
+SELECT AO.ANIMAL_ID, AO.NAME
+FROM ANIMAL_INS AI, ANIMAL_OUTS AO
+WHERE AI.ANIMAL_ID(+) = AO.ANIMAL_ID
+      AND AI.ANIMAL_ID IS NULL
+ORDER BY ANIMAL_ID;
+
+
+
 --2. 있었는데요 없었습니다
 select ANIMAL_ID,NAME
 from(
@@ -134,6 +151,11 @@ from(
 where O_DATETIME<I_DATETIME
 order by I_DATETIME;
 
+SELECT AI.ANIMAL_ID, AI.NAME
+FROM ANIMAL_INS AI, ANIMAL_OUTS AO
+WHERE AI.ANIMAL_ID = AO.ANIMAL_ID
+      AND AI.DATETIME > AO.DATETIME
+ORDER BY AI.DATETIME
 
 --3. 오랜 기간 보호한 동물(1)
 --ROWNUM : select 로 조회된 결과에 순서대로 순번을 매긴다
